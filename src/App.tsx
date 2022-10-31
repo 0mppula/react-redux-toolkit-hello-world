@@ -1,26 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import styled from 'styled-components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Users from './pages/Users';
+import Posts from './pages/Posts';
+import Comments from './pages/Comments';
+import All from './pages/All';
+
+const Container = styled.div`
+	width: min(1200px, 95vw);
+	margin: 0 auto;
+	position: relative;
+	min-height: 100vh;
+	padding-top: 9rem;
+`;
+
+const App: FC = () => {
+	return (
+		<>
+			<Container>
+				<BrowserRouter>
+					<Header />
+
+					<Routes>
+						<Route path="/users" element={<Users />} />
+						<Route path="/posts" element={<Posts />} />
+						<Route path="/comments" element={<Comments />} />
+						<Route path="/all" element={<All />} />
+						<Route path="*" element={<Navigate to="/users" />} />
+					</Routes>
+
+					{/* SCROLL TO TOP */}
+				</BrowserRouter>
+			</Container>
+
+			<Footer />
+		</>
+	);
+};
 
 export default App;
