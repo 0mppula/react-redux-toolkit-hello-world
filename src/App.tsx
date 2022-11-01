@@ -8,6 +8,7 @@ import Users from './pages/Users';
 import Posts from './pages/Posts';
 import Comments from './pages/Comments';
 import All from './pages/All';
+import ScrollToTop from './components/Tools/ScrollToTop';
 
 const Container = styled.div`
 	width: min(1200px, 95vw);
@@ -32,7 +33,7 @@ const App: FC = () => {
 						<Route path="*" element={<Navigate to="/users" />} />
 					</Routes>
 
-					{/* SCROLL TO TOP */}
+					<ScrollToTop />
 				</BrowserRouter>
 			</Container>
 
