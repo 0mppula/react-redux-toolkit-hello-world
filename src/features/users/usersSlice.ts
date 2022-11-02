@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+
 import { userType } from '../../assets/interfaces';
 
 interface usersStateType {
@@ -10,10 +12,19 @@ interface usersStateType {
 const initialState: usersStateType = {
 	users: null,
 	error: '',
-	loading: false,
+	loading: true,
 };
 
-const fetchUsers = () => {};
+export const fetchUsers = createAsyncThunk('fetchUsers', async (_, thunkAPI) => {
+	try {
+		const response = await axios.get('https://jsonplaceholder.typicode.com/users');
+		const users = response.data;
+		return users;
+	} catch (error: any) {
+		const message = error?.message || 'Error fetching the users';
+		return thunkAPI.rejectWithValue(message);
+	}
+});
 
 export const usersSlice = createSlice({
 	name: 'users',
@@ -21,7 +32,22 @@ export const usersSlice = createSlice({
 	reducers: {
 		reset: () => initialState,
 	},
-	extraReducers: (builder) => {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(fetchUsers.pending, (state) => {
+				state.error = '';
+				state.loading = true;
+			})
+			.addCase(fetchUsers.fulfilled, (state, action) => {
+				state.error = '';
+				state.loading = false;
+				state.users = action.payload;
+			})
+			.addCase(fetchUsers.rejected, (state, action) => {
+				state.loading = false;
+				state.error = action.payload as string;
+			});
+	},
 });
 
 export const { reset } = usersSlice.actions;
