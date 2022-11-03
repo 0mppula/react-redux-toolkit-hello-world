@@ -15,10 +15,11 @@ const initialState: usersStateType = {
 	loading: true,
 };
 
-export const fetchUsers = createAsyncThunk('fetchUsers', async (_, thunkAPI) => {
+export const fetchUsers = createAsyncThunk('users/fetch-all', async (_, thunkAPI) => {
 	try {
 		const response = await axios.get('https://jsonplaceholder.typicode.com/users');
 		const users = response.data;
+		
 		return users;
 	} catch (error: any) {
 		const message = error?.message || 'Error fetching the users';

@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { PostListProps } from '../../assets/interfaces';
 
+import { PostListProps } from '../../assets/interfaces';
 import { ListItem, ListItemSection } from './listElements';
 
 const PostsList: FC<PostListProps> = ({ posts }) => {
