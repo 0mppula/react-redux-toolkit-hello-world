@@ -22,7 +22,7 @@ const Users: FC = () => {
 		};
 
 		getUsers();
-	}, [users, dispatch, fetchUsers]);
+	}, [users, dispatch]);
 
 	if (loading) {
 		return <Loading />;
