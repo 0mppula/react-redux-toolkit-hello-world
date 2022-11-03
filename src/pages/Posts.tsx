@@ -22,7 +22,7 @@ const Posts: FC = () => {
 		};
 
 		getPosts();
-	}, []);
+	}, [posts, dispatch, fetchPosts]);
 
 	if (loading) {
 		return <Loading />;
