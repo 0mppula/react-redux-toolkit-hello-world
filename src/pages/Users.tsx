@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { AppDispatch, RootState } from '../app/store';
 import { fetchUsers } from '../features/users/usersSlice';
+import { ListContainer, ListItemsHeader } from '../components/List/listElements';
 import Loading from '../components/List/Loading';
 import Error from '../components/List/Error';
-import { ListContainer, ListItemsHeader } from '../components/List/listElements';
 import UsersList from '../components/List/UsersList';
 
 const Users: FC = () => {

@@ -1,10 +1,10 @@
 import { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../app/store';
 
+import { AppDispatch, RootState } from '../app/store';
+import { fetchPosts } from '../features/posts/postsSlice';
 import { ListContainer, ListItemsHeader } from '../components/List/listElements';
 import PostsList from '../components/List/PostsList';
-import { fetchPosts } from '../features/posts/postsSlice';
 import Loading from '../components/List/Loading';
 import Error from '../components/List/Error';
 
