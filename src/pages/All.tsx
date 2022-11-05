@@ -41,7 +41,7 @@ const All: FC = () => {
 		};
 
 		getAll();
-	}, [comments, dispatch]);
+	}, [users, posts, comments, dispatch]);
 
 	if (UsersLoading || PostsLoading || CommentsLoading) {
 		return <Loading />;
