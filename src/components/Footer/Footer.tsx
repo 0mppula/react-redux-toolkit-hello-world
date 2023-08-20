@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
 	justify-content: center;
 	width: 100%;
 	padding: 5rem 0 2rem 0;
-	gap: 0.25rem;
+
 	a {
 		color: var(--clr-light);
 	}
@@ -19,10 +19,12 @@ const FooterContainer = styled.footer`
 const Footer: FC = () => {
 	return (
 		<FooterContainer>
-			<span>Developed By:</span>
-			<a href="https://github.com/0mppula" target="_blank" rel="noopener noreferrer">
-				Omar Kraidié
-			</a>
+			<span>
+				Developed by{' '}
+				<a href="https://www.omarkraidie.com" target="_blank" rel="noopener noreferrer">
+					Omar Kraidié
+				</a>
+			</span>
 		</FooterContainer>
 	);
 };
